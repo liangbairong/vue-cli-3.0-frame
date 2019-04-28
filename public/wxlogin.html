@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>微信授权</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script>
+  var APPID='wx726ff9deed4sdsds'
+  var getQueryString = function (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+  var code = getQueryString("code");
+  var callbackurl = getQueryString("callbackurl");
+  if (callbackurl) {
+    callbackurl = decodeURIComponent(callbackurl)
+    window.sessionStorage.setItem("callbackurl", callbackurl)
+  }
+  if (code) {
+    var url = window.sessionStorage.getItem("callbackurl")
+    if (url.indexOf("?") != -1) {
+      url = url + "&code=" + code;
+    } else {
+      url = url + "?code=" + code;
+    }
+    window.location.href = url;
+  } else {
+    let redirectUrl = encodeURIComponent(window.location.href);
+    var wxurl =
+      'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+APPID+'&redirect_uri='+redirectUrl+'&response_type=code&scope=snsapi_userinfo&state=123'
+    window.location.href = wxurl;
+  }
+</script>
+
+<body>
+</body>
+
+</html>
