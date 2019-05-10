@@ -23,6 +23,48 @@ module.exports = {
         host: '0.0.0.0',
         disableHostCheck: true, //  新增该配置项
         // port: 4000
+
+          // 跨域
+          proxy: {
+            '/api': {
+                target: 'https://partner-wx.mijila.com/api', //源地址 
+                secure: true, // 如果是https接口，需要配置这个参数
+                changeOrigin: true, //改变源 
+                pathRewrite: {
+                    '^/api': '' //路径重写 
+                }
+            }
+        }
       },
+
+
+       // 第三方库加cdn配置
+    configureWebpack: {
+        externals: {
+            vue: 'Vue',
+            'mint-ui': 'MINT',
+        }
+    },
+    chainWebpack(config) {
+        const cdn = {
+            css: [
+                // element-ui css
+                // 'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
+            ],
+            js: [
+                // vue must at first!
+                'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
+                'https://cdn.bootcss.com/mint-ui/2.2.13/index.js'
+            ]
+        }
+
+        config.plugin('html').tap(args => {
+            args[0].cdn = cdn
+            return args
+        })
+
+        config.plugins.delete('preload') // TODO: need test
+        config.plugins.delete('prefetch') // TODO: need test
+    }
 
 }

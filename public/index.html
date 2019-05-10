@@ -13,6 +13,10 @@
       <strong>We're sorry but vue_webpack3.0 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+
+    <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+      <script src="<%=js%>"></script>
+    <% } %>
     <!-- built files will be auto injected -->
   </body>
 </html>
