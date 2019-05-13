@@ -15,9 +15,9 @@ module.exports = {
                 ]
             }
         },
-        extract:process.env.VUE_APP_TITLE == '正式环境' ? true:false,
+        extract: process.env.NODE_ENV == 'production' ? true : false,   //是否分离css
     },
-    productionSourceMap:true,  // 生产环境下css 分离文件
+    productionSourceMap: process.env.NODE_ENV == 'production' ? false : true, // 是否生产map文件
     outputDir: process.env.VUE_APP_TITLE == '正式环境' ? 'dist_pro':'dist_test',
     devServer: {
         host: '0.0.0.0',
