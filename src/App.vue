@@ -1,3 +1,8 @@
+<!--
+ * @Author: 梁栢荣
+ * @Date: 2019-09-03 17:01:36
+ * @Description: file content
+ -->
 <template>
   <div id="app">
     <keep-alive>
@@ -38,20 +43,8 @@
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop;
-        _this.topNum = scrollTop;
+          _this.topNum = scrollTop;
       }
-
-      if (window.location.href.indexOf('bindaccount') == -1) {
-        console.log(window.location.href)
-        if (this.sessionid) {
-          this.getUserInfo()
-        }
-      }
-
-
-
-      this.getConfigDict();
-      this.getConfigInfo();
 
     },
     watch: {
@@ -67,15 +60,12 @@
             window.scrollTo(0, to.meta.topNum);
           }, 50);
         }
-        if (to.name != 'wxlogin') {
-          if (!this.sessionid) {
-            this.$router.replace("/wxLogin");
-          }
-        }
-        // console.log(from);
-        // console.log(to);
-
-        this.$wx.init(to, {})
+        // if (to.name != 'wxlogin') {
+        //   if (!this.sessionid) {
+        //     this.$router.replace("/wxLogin");
+        //   }
+        // }
+        // this.$wx.init(to, {})
       }
     },
     methods: {

@@ -1,3 +1,8 @@
+<!--
+ * @Author: 梁栢荣
+ * @Date: 2019-09-03 17:01:36
+ * @Description: file content
+ -->
 <template>
   <div>
   </div>
@@ -12,25 +17,25 @@
     components: {},
     created() {
       //微信授权
-      var code = this.$route.query.code
-      if (code) {
-        this.$api.common.login(code).then(res => {
-          if (res.errcode === 0) {
-            this.$store.commit('saveSessionid', res.data.sessionid);
-            this.$store.commit('getUserInfo', () => {
-              window.location.replace('./home')
-            });
-          }
-        })
-      } else {
-        if (this.$store.state.sessionid) {
-          this.$router.replace("/home");
-          return;
-        }
-        let redirectUrl = encodeURIComponent(window.location.href);
-        window.location.href = process.env.VUE_APP_WXBASELOGIN+'/wxlogin.html?callbackurl=' + redirectUrl;
+      // var code = this.$route.query.code
+      // if (code) {
+      //   this.$api.common.login(code).then(res => {
+      //     if (res.errcode === 0) {
+      //       this.$store.commit('saveSessionid', res.data.sessionid);
+      //       this.$store.commit('getUserInfo', () => {
+      //         window.location.replace('./home')
+      //       });
+      //     }
+      //   })
+      // } else {
+      //   if (this.$store.state.sessionid) {
+      //     this.$router.replace("/home");
+      //     return;
+      //   }
+      //   let redirectUrl = encodeURIComponent(window.location.href);
+      //   window.location.href = process.env.VUE_APP_WXBASELOGIN+'/wxlogin.html?callbackurl=' + redirectUrl;
 
-      }
+      // }
     },
     methods: {
     

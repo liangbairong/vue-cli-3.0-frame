@@ -1,3 +1,8 @@
+/*
+ * @Author: 梁栢荣
+ * @Date: 2019-09-03 17:01:36
+ * @Description: file content
+ */
 import api from "@/api/index"
 import wx from 'weixin-js-sdk'
 import {
@@ -64,7 +69,8 @@ export default class wxConfig {
       wx.onMenuShareAppMessage($wx.share1);
       wx.onMenuShareTimeline($wx.share2);
     })
-    wx.error((res) => {
+    wx.error((err) => {
+      console.log(err)
       // this.init(param)
     });
   }
