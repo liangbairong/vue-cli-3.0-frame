@@ -1,3 +1,8 @@
+/*
+ * @Author: 梁栢荣
+ * @Date: 2019-08-29 14:01:16
+ * @Description: file content
+ */
 /**
  * 
  * 
@@ -9,7 +14,11 @@ import {
 } from '@/uilts/uilts'
 
 export default {
- 
+  info() {
+    return http({
+      url:  process.env.VUE_APP_ROOT + '/api/posts',
+    })
+  },
   common: {
     // 获取ticket wx配置
     ticket(url) {

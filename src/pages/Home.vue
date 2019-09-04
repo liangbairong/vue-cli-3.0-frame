@@ -30,6 +30,9 @@
     created() {
       console.log(this.$store.state.common.settleInfo)
       console.log(this.settleInfo)
+      this.$api.info().then(res=>{
+        console.log(res)
+      });
     },
     methods: {
       ...mapMutations(["getUserInfo"]),
