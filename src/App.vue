@@ -46,6 +46,8 @@
           _this.topNum = scrollTop;
       }
 
+
+
     },
     watch: {
       $route(to, from) {
@@ -60,6 +62,8 @@
             window.scrollTo(0, to.meta.topNum);
           }, 50);
         }
+
+        console.log(this.$route.matched)
         // if (to.name != 'wxlogin') {
         //   if (!this.sessionid) {
         //     this.$router.replace("/wxLogin");

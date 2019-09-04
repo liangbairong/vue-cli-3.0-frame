@@ -5,7 +5,7 @@
  -->
 <template>
   <div>
-  
+    <router-link to="/wxlogin">go</router-link>
   </div>
 </template>
 
