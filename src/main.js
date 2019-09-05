@@ -3,18 +3,14 @@
  * @Date: 2019-09-03 17:01:36
  * @Description: file content
  */
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './vuex/index'
-
-console.log(process.env.VUE_APP_TITLE)
 if(process.env.VUE_APP_TITLE=='mock'){
   require('./mock/index')
 }
-
-
-
 import 'lib-flexible'
 import '@/assets/css/public.scss'
 import vueTap from 'v-tap';
